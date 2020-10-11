@@ -10,6 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public float Health;
     public float MaxHealth = 100.0f;
     public float HealthRegen;
+    public float RegenMultiplier = 0.015f;
 
 
     public EnergyStatus energyBar;
@@ -26,7 +27,7 @@ public class PlayerStatus : MonoBehaviour
             Dead();
             energyBar.EnergyFill.color = energyBar.gradient.Evaluate(0f);
         }
-        if (Health <= MaxHealth)
+        if (Health <= MaxHealth && Health >= 0)
         {
             Regen();
             energyBar.SetHealth(Health);
@@ -43,11 +44,20 @@ public class PlayerStatus : MonoBehaviour
         energyBar.SetHealth(Health);
     }
 
-    void Dead()=> UnityEngine.Debug.Log("PlayerDied");
+    void Dead()
+    {
+        UnityEngine.Debug.Log("PlayerDied");
+        RespawnMenu.PlayerIsDead = true;
+    }
 
     void Regen()
     {
-        HealthRegen = MaxHealth * 0.015f;
+        HealthRegen = MaxHealth * RegenMultiplier;
         Health += (HealthRegen) * Time.deltaTime;
+    }
+    
+    void RespawnStatus()
+    {
+        Health = MaxHealth * 0.9f;
     }
 }

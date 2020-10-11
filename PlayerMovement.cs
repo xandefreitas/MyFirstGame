@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float runningSpeed = 13.0f;
     public float crouchSpeed = 5.0f;
     public float walkSpeed = 8.0f;
-    private float charHeight = 3.8f;
+    private float charHeight = 3.6f;
     private bool Standing = true;
 
     public Transform groundCheck;

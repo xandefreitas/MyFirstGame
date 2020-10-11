@@ -34,26 +34,29 @@ public class SimpleAI : MonoBehaviour
 
     void Update()
     {
-        Distance = Vector3.Distance(Target.position, transform.position);
+        if (RespawnMenu.PlayerIsDead == false)
+        {
+            Distance = Vector3.Distance(Target.position, transform.position);
 
-        if (Distance < lookAtDistance)
-        {
-            lookAt();
-            
-        }
-        if (Distance > lookAtDistance)
-        {
-            GetComponent<Renderer>().material.color = Color.blue;
-            EnemyEyes.GetComponent<Renderer>().material.color = Color.blue;
-        }
-        if (Distance < attackRange)
-        {
-            attack();
-        }
-        else if (Distance < chaseRange)
-        {
-            chase();
-            
+            if (Distance < lookAtDistance)
+            {
+                lookAt();
+
+            }
+            if (Distance > lookAtDistance)
+            {
+                GetComponent<Renderer>().material.color = Color.blue;
+                EnemyEyes.GetComponent<Renderer>().material.color = Color.blue;
+            }
+            if (Distance < attackRange)
+            {
+                attack();
+            }
+            else if (Distance < chaseRange)
+            {
+                chase();
+
+            }
         }
     }
 
