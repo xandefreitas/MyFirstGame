@@ -65,7 +65,7 @@ public class SimpleAI : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.yellow;
         EnemyEyes.GetComponent<Renderer>().material.color = Color.yellow;
         Quaternion rotation = Quaternion.LookRotation(Target.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
     }
 
     void chase()
