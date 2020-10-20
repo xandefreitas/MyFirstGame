@@ -24,6 +24,7 @@ public class SimpleAI : MonoBehaviour
     private Vector3 MoveDirection = Vector3.zero;
     public float TheDamage = 10.0f;
 
+    Vector3 velocity;
     
     
 
@@ -65,16 +66,17 @@ public class SimpleAI : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.yellow;
         EnemyEyes.GetComponent<Renderer>().material.color = Color.yellow;
         Quaternion rotation = Quaternion.LookRotation(Target.position - transform.position);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
     }
 
     void chase()
     {
         GetComponent<Renderer>().material.color = Color.red;
         EnemyEyes.GetComponent<Renderer>().material.color = Color.red;
+        velocity.y -= gravity * Time.deltaTime;
         MoveDirection = transform.forward;
         MoveDirection *= moveSpeed;
-        MoveDirection.y -= gravity * Time.deltaTime;
+        MoveDirection.y = velocity.y;
         controller.Move(MoveDirection * Time.deltaTime);
     }
 
