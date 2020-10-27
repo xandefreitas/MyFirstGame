@@ -14,6 +14,10 @@ public class WeaponChange : MonoBehaviour
         {
             WeaponSwap();
         }
+        if (Weapon02.activeSelf == true)
+        {
+            Weapon01.SetActive(false);
+        }
     }
 
     void WeaponSwap()

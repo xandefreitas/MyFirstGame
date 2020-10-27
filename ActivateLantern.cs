@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ActivateLantern : MonoBehaviour
 {
-    public GameObject Lantern;
-    public GameObject GroundLantern;
+    public GameObject Axe;
+    public GameObject GroundAxe;
     private bool drawGUI = false;
     private bool Passou = false;
+    public GameObject WeaponChange;
 
     void Update()
     {
@@ -21,11 +22,12 @@ public class ActivateLantern : MonoBehaviour
         if (theCollider.CompareTag("Player"))
         {
             
-            GroundLantern.SetActive(false);
+            GroundAxe.SetActive(false);
             if (Passou == false)
             {
-                Lantern.SetActive(true);
-                Lantern.GetComponent<Animation>().CrossFade("Swap02");
+                Axe.SetActive(true);
+                Axe.GetComponent<Animation>().CrossFade("Swap02");
+                WeaponChange.SetActive(true);
                 drawGUI = true;
             }
             Passou = true;
@@ -36,7 +38,7 @@ public class ActivateLantern : MonoBehaviour
     {
         if (drawGUI == true)
         {
-            GUI.Box(new Rect(Screen.width * 0.5f - 51, 200, 102, 22), "F for Flashlight");
+            GUI.Box(new Rect(Screen.width * 0.5f - 51, 200, 204, 22), " Press Q for Weapon Change");
         }
     }
     IEnumerator ShowTip()

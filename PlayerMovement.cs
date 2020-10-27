@@ -56,15 +56,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftControl)) 
         {
-            controller.height -= 1.4f;
-            PlayerMesh.position = new Vector3(PlayerMesh.position.x, PlayerMesh.position.y - 0.7f, PlayerMesh.position.z);
+            controller.height -= 0.8f;
+            PlayerMesh.position = new Vector3(PlayerMesh.position.x, PlayerMesh.position.y - 0.4f, PlayerMesh.position.z);
             speed = crouchSpeed;
             Standing = false;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             controller.height = charHeight;
-            PlayerMesh.position = new Vector3(PlayerMesh.position.x, PlayerMesh.position.y + 0.7f, PlayerMesh.position.z);
+            PlayerMesh.position = new Vector3(PlayerMesh.position.x, PlayerMesh.position.y + 0.4f, PlayerMesh.position.z);
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = runningSpeed;

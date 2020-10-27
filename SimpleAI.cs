@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class SimpleAI : MonoBehaviour
 {
-    public Transform EnemyEyes;
+    public Transform EnemyBody;
     public Transform Target;
     public CharacterController controller;
     public float Distance;
@@ -46,8 +46,8 @@ public class SimpleAI : MonoBehaviour
             }
             if (Distance > lookAtDistance)
             {
-                GetComponent<Renderer>().material.color = Color.blue;
-                EnemyEyes.GetComponent<Renderer>().material.color = Color.blue;
+                EnemyBody.GetComponent<Renderer>().material.color = Color.blue;
+
             }
             if (Distance < attackRange)
             {
@@ -63,16 +63,14 @@ public class SimpleAI : MonoBehaviour
 
     void lookAt()
     {
-        GetComponent<Renderer>().material.color = Color.yellow;
-        EnemyEyes.GetComponent<Renderer>().material.color = Color.yellow;
+        EnemyBody.GetComponent<Renderer>().material.color = Color.yellow;
         Quaternion rotation = Quaternion.LookRotation(Target.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
     }
 
     void chase()
     {
-        GetComponent<Renderer>().material.color = Color.red;
-        EnemyEyes.GetComponent<Renderer>().material.color = Color.red;
+        EnemyBody.GetComponent<Renderer>().material.color = Color.red;
         velocity.y -= gravity * Time.deltaTime;
         MoveDirection = transform.forward;
         MoveDirection *= moveSpeed;
